@@ -22,7 +22,12 @@ Ayrıca 'https://app.swaggerhub.com/apis/yyusufaslan/KrediLimitSorgulama/1.0.0' 
     Maven
     Docker
     MongoDB
-
+    PostgreSQL
+#### Direkt Çalıştırma : 
+    - creditscore isimili veritabanı MongoDB de oluşturulmalı ve mongo_script.text içinde ki script çalıştırılmalı.
+    - loanapplication isimli veritabanı PostgreSQL de oluşturulmalı.
+    - Her projenin içinde 'mvn spring-boot:run' metodu çalıştırılmalı
+    
 #### Docker Compose : 
     run: docker-compose up
 

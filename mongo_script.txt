@@ -1,0 +1,19 @@
+db.getCollection('creditscore').insertMany([{
+    "_id" : ObjectId("5f52a22768734b6942127c62"),
+    "nationalIdentityId" : "22222222222",
+    "score" : NumberLong(200),
+    "_class" : "com.kocfinans.creditscore.entity.CreditScore"
+},
+{
+    "_id" : ObjectId("5f5294bbab7f3b15beb74a64"),
+    "nationalIdentityId" : "11111111111",
+    "score" : NumberLong(1500),
+    "_class" : "com.kocfinans.creditscore.entity.CreditScore"
+},
+{
+    "_id" : ObjectId("5f5294bbab7f3b134eb74a61"),
+    "nationalIdentityId" : "33333333333",
+    "score" : NumberLong(5000),
+    "_class" : "com.kocfinans.creditscore.entity.CreditScore"
+}]
+)

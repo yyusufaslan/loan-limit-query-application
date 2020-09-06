@@ -5,19 +5,14 @@ spring:
   main:
     allow-bean-definition-overriding: true
   jpa:
-    show-sql: true
     hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.H2Dialect
+      ddl-auto: create
+    show-sql: true
   datasource:
-    platform: platform
-    url: jdbc:h2:mem:loanapplication
-    username: sa
-    password: password
-    driver-class-name: org.h2.Driver
-  h2:
-    console:
-      enabled: true
+    platform: org.hibernate.dialect.PostgreSQL94Dialect
+    url: jdbc:postgresql://localhost:5432/loanapplication?createDatabaseIfNotExist=true
+    username: postgres
+    password: postgres
 client:
   credit-score-service:
     url: http://localhost:8082

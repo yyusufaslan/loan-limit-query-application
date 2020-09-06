@@ -1,6 +1,7 @@
-FROM openjdk:8-jdk-alpine
-ADD ./target/notificationservice-0.0.1-SNAPSHOT.jar /usr/src/notificationservice-0.0.1-SNAPSHOT.jar
-WORKDIR usr/src
+FROM java:8
 VOLUME /tmp
-EXPOSE 8081
-ENTRYPOINT ["java","-jar", "notificationservice-0.0.1-SNAPSHOT.jar"]
+ADD target/notification-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8080
+RUN bash -c 'touch /app.jar'
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+

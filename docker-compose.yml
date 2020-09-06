@@ -4,14 +4,36 @@ services:
     image: mongo:3.4
     restart: always
     network_mode: host
+    container_name: creditscore-mongo
     ports:
       - 27017:27017
-    command: --config /etc/mongo/mongod.conf
+    command: --config /usr/local/etc/mongod.conf
+    volumes:
+      - $HOME/data/springboot-mongo-data:/data/db
+      - $HOME/data/springboot-mongo-bkp:/data/bkp
 
   creditscore:
-    build: .
+    build: ./creditscore
+    image: creditscore
     network_mode: host
+    working_dir: /opt/app
     ports:
       - 8082:8082
     depends_on:
       - mongo
+  loanapplication:
+    build: ./loanapplication
+    image: loanapplication
+    network_mode: host
+    working_dir: /opt/app
+    ports:
+      - 8080:8080
+      -
+  notification:
+    build: ./notification
+    image: notification
+    network_mode: host
+    working_dir: /opt/app
+    ports:
+      - 8081:8081
+

@@ -2,16 +2,17 @@ package com.kocfinans.loanapplication.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Data
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
-    private long userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String nationalIdentityId;
     private String name;
     private String surname;

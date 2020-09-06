@@ -1,4 +1,7 @@
-FROM java:8-jdk-alpine
-ADD ${JAR_FILE} ${directo}
-ENTRYPOINT ["java","-jar","loanapplication-0.0.1-SNAPSHOT.jar.jar"]
+FROM java:8
+VOLUME /tmp
+ADD target/loanapplication-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8080
+RUN bash -c 'touch /app.jar'
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
 
