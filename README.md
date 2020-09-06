@@ -38,3 +38,14 @@ Ayrıca 'https://app.swaggerhub.com/apis/yyusufaslan/KrediLimitSorgulama/1.0.0' 
 http://localhost:8080/actuator/metrics
 
 http://localhost:8080/actuator/health
+
+## Ekran Görüntüleri
+
+![image](https://user-images.githubusercontent.com/22644682/92335776-dceb5580-f0a2-11ea-8c37-ab877545ff5b.png)
+
+
+![image](https://user-images.githubusercontent.com/22644682/92335744-9ac21400-f0a2-11ea-8e24-65bb0365c4a1.png)
+
+
+![image](https://user-images.githubusercontent.com/22644682/92335784-00ae9b80-f0a3-11ea-9779-5583a312e705.png)
+
