@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/creditscore/creditscore.iml" filepath="$PROJECT_DIR$/creditscore/creditscore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/loan-limit-query-application.iml" filepath="$PROJECT_DIR$/.idea/loan-limit-query-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loanapplication/loanapplication.iml" filepath="$PROJECT_DIR$/loanapplication/loanapplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notificationservice/notificationservice.iml" filepath="$PROJECT_DIR$/notificationservice/notificationservice.iml" />
+    </modules>
+  </component>
+</project>

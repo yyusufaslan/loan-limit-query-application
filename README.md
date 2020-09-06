@@ -11,23 +11,23 @@ Proje modülleri mikroservis mimarisine uygun şekilde yazılmıştır. Müşter
 T.C kimlik numarasına göre MongoDB veritabanından ilgili müşterinin kredi skorunu getiren servis credit-score modülü, 
 işlem sonucunda müşteriye başvuru sonucuna göre gerekli bildirimi(SMS-E-mail) gönderen notification modülü olarak yazılmıştır..
 
-####Swagger Dökümanı
+#### Swagger Dökümanı
 Swagger dökümanı proje içerisine 'http://localhost:8080/swagger' adresine html olarak gömülmüştür. 
 Ayrıca 'https://app.swaggerhub.com/apis/yyusufaslan/KrediLimitSorgulama/1.0.0' adresinden de incelenebilir. 
 
-##Projenin Çalıştırılması
-#####Gereksinimler :
+## Projenin Çalıştırılması
+##### Gereksinimler :
     Java 1.8
     Maven
     Docker
     MongoDB
 
-####Docker Compose : 
+#### Docker Compose : 
     run: docker-compose up
 
     open: http://localhost:8080 
 
-####Actuator endpoints:
+#### Actuator endpoints:
 
 http://localhost:8080/actuator/metrics
 
