@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<title>Kredi Hesapla</title>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Koç Finans</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <!--li class="nav-item active">
+                <a class="nav-link" href="#">Kredi Hesapla <span class="sr-only">(current)</span></a>
+            </li--->
+            <li class="nav-item">
+                <a class="nav-link" href="#">Kredi Limit Sorgula</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h4 class="display-4">Kredi limit sorgulama portalina hosgeldiniz !!! </h4>
+            <p>Kredi limit sorgusu icin lutfen tiklayiniz...</p>
+            <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Basvuru
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col">
+            <div class="collapse" id="collapseExample" >
+
+                <div class="container "  id="sendform">
+
+                        <h2>Kredi Limit Sorgu Formu</h2>
+                        <p>Aşağıda ki bilgileri doldurduktan sonra başvuru sorgunuz SMS olarak size iletilecektir. </p>
+                        <div class="form-group">
+                            <label >Ad:</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="..." required>
+                            <div class="invalid-feedback">Lütfen geçerli bir ad giriniz..</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Soyad:</label>
+                            <input type="text" class="form-control" id="surname" name="surname" placeholder="..." required>
+                            <div class="invalid-feedback">Lütfen geçerli bir soyad giriniz..</div>
+                        </div>
+                        <div class="form-group">
+                            <label>T.C Kimlik:</label>
+                            <input type="number" class="form-control" id="tckn" name="tckn" pattern="^\d{11}$" placeholder="11 hane" required>
+                            <div class="valid-feedback">Başarılı</div>
+                            <div class="invalid-feedback">Lütfen geçerli bir T.C kimlik numarası giriniz!!!</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon No:</label>
+                            <input type="number"  class="form-control phone-number" name="phone" pattern="^\d{4}\d{3}\d{4}$" id="phone" placeholder="05********" required>
+                            <div class="invalid-feedback">Lütfen geçerli bir telefon numarası giriniz..</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Aylık Gelir (Türk Lirası):</label>
+                            <input type="number" class="form-control" id="salary" name="salary" placeholder="TL" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Lütfen geçerli bir ücret giriniz..</div>
+                        </div>
+                        <a id="btnSave" class="btn btn-primary">Gönder</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div id="response">
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="container">
+    <p>&copy; Company 2017-2018</p>
+</footer>
+
+
+<script>
+    $("#btnSave").click(function (event) {
+        $.ajax({
+            type: "post",
+            url: 'http://localhost:8080/loan/calculate-loan-score',
+            data: JSON.stringify({
+                nationalIdentityId: $("#tckn").val().toString()  ,
+                name: $("#name").val(),
+                surname: $("#surname").val(),
+                phoneNumber: $("#phone").val().toString(),
+                monthlySalary: $("#salary").val()
+            }),
+            contentType:"application/json; charset=utf-8",
+            cache: false,
+            dataType:"json",
+            success: function (result) {
+                $('#collapseExample').collapse('hide');
+                var objResponse = JSON.stringify(result);
+                if (result.status === "APPROVE"){
+
+                    console.log("Approve");
+                    document.getElementById("response").innerHTML =
+                        "<h5>" + result.responseMessage + "Limitiniz : "+result.loanLimit + "TL </h5>";
+                }else {
+                    document.getElementById("response").innerHTML =
+                        "<h5>" + result.responseMessage + "Limitiniz : " +result.loanLimit + "TL </h5>";
+                }
+                if (result.notificationStatus === true){
+                    document.getElementById("notification").innerHTML =
+                        "<h6> Bilgilendirme SMS'i tarafınıza ulaştırılmıştır.. </h6>";
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+
+            }
+        });
+    });
+</script>
+<!-- Bootstrap core JavaScript
+================================================== -->
+</body>
+</html>

@@ -1,0 +1,16 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      username: mongo
+      password: mongo
+      database: creditscore
+      port: 27017
+      repositories:
+        type: auto
+      host: localhost
+  resources:
+    add-mappings: false
+
+server:
+  port: 8082

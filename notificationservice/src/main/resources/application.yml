@@ -1,0 +1,7 @@
+url:
+  notificationUrl: http://sms-service:8080/rest/notification
+server:
+  port: 8081
+
+
+
